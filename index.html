@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="jquery.js"></script>
+        <script src="sutils.js"></script> 
+        <script src="base.js"></script> 
+    </head>
+    <body>
+        <div id="movieList"></div>
+        <hr />
+        <div id="movieList2"></div>
+        <script>
+            var movies = [
+                { name: "The Red Violin", releaseYear: "1998" },
+                { name: "Eyes Wide Shut", releaseYear: "1999" },
+                { name: "The Inheritance", releaseYear: "1976" }
+            ];
+            
+            $.when($.get("template/template.tmpl.html"))
+             .done(function(tmplData) {
+                 $.templates({ tmpl: tmplData });
+                 var rm = $.render.tmpl(movies);
+                 $("#movieList").html($.render.tmpl(movies));
+             });    
+             
+        </script>
+        
+        <script>
+            var item={ name: 'template', selector: '#movieList2', data: movies }
+            sutils.renderExtTemplate(item);
+            
+            // 这骚操作是骗谁呢
+            //history.pushState({}, "Su", "jsrender/demo")
+        </script> 
+    </body>
+</html>

@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <script type="module">
+            import {foo, dic, num} from './module.js';
+
+            console.log(num);
+            console.log(foo());
+            document.body.append(num + dic['key'] +foo());
+          
+        </script>
+    </body>
+</html>    
